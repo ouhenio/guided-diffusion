@@ -628,10 +628,10 @@ class GaussianDiffusion:
 
         for i in indices:
             t = th.tensor([i] * shape[0], device=device)
-            if randomize_class and 'y' in model_kwargs:
-                model_kwargs['y'] = th.randint(low=0, high=model.num_classes,
-                                               size=model_kwargs['y'].shape,
-                                               device=model_kwargs['y'].device)
+            # if randomize_class and 'y' in model_kwargs:
+            #     model_kwargs['y'] = th.randint(low=0, high=model.num_classes,
+            #                                    size=model_kwargs['y'].shape,
+            #                                    device=model_kwargs['y'].device)
             with th.no_grad():
                 sample_fn = self.p_sample_with_grad if cond_fn_with_grad else self.p_sample
                 out = sample_fn(
